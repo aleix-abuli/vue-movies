@@ -1,13 +1,23 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import { useShowStore } from "./stores/shows";
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
+import { getMemoedVNodeCall } from "@vue/compiler-core";
+
+/* const api_key = import.meta.env.VITE_API_KEY;
+console.log(api_key);
+
+const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api_key}`)
+const responseData = await response.json()
+console.log(responseData?.results); */
+
 </script>
 
 <template>
-  <header>
-    <h1>App header</h1>
-  </header>
-
+  <Navbar />
   <RouterView />
+  <Footer />
 </template>
 
 <style scoped>
