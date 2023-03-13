@@ -15,12 +15,9 @@ setInterval(() => {
 
   console.log(currentDisplay.value)
   console.log(props.shows)
-}, 3000);
+}, 6000);
 </script>
 
 <template>
-  <HeaderShow :show="shows[currentDisplay]" />
-  <span>{{ currentDisplay === 0 ? 'selected' : 'nonsel' }}</span>
-  <span>{{ currentDisplay === 1 ? 'selected' : 'nonsel' }}</span>
-  <span>{{ currentDisplay === 2 ? 'selected' : 'nonsel' }}</span>
+  <HeaderShow :show="shows[currentDisplay]" :current_display="currentDisplay" />
 </template>

@@ -42,32 +42,31 @@ onMounted(async () => {
 
 <template>
   <header>
-    <h1>Welcome to SerialBinger</h1>
     <HomeHeader v-if="showStore.popularShows && showStore.genres" :shows="showStore.popularShows.slice(0,3)"/>
   </header>
   <main>
-    <h2>What's hot</h2>
+    <h2 class="home-view-title">What's hot <span>></span></h2>
     <ShowCarousel
       v-if="showStore.popularShows"
       :shows="showStore.popularShows"
       :see_more="true"
       @addShows="addPopular"
     />
-    <h2>Top rated TV shows</h2>
+    <h2 class="home-view-title">Top rated TV shows <span>></span></h2>
     <ShowCarousel
       v-if="showStore.topRatedShows"
       :shows="showStore.topRatedShows"
       :see_more="true"
       @addShows="addTop"
     />
-    <h2>Airing today</h2>
+    <h2 class="home-view-title">Airing today <span>></span></h2>
     <ShowCarousel
       v-if="showStore.airingToday"
       :shows="showStore.airingToday"
       :see_more="true"
       @addShows="addAiringToday"
     />
-    <h2>Airing this week</h2>
+    <h2 class="home-view-title">Airing this week <span>></span></h2>
     <ShowCarousel
       v-if="showStore.airingThisWeek"
       :shows="showStore.airingThisWeek"

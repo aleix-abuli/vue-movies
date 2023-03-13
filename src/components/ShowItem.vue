@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <RouterLink :to="`/shows/${show.id}`">
+  <RouterLink :to="`/shows/${show.id}`" class="show-item-container">
     <img
       :src="
       show.backdrop_path ?

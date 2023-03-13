@@ -2,5 +2,7 @@
 </script>
 
 <template>
-  Footer
+  <footer>
+    <p>Coded by Aleix Abulí</p>
+  </footer>
 </template>
