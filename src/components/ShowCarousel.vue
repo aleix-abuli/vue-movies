@@ -9,6 +9,7 @@ const props = defineProps({
   }
 });
 
+/*  STILL MISSING WAY TO WATCH PROPS IN ORDER TO CHANGE THE CAROUSEL WHEN WE CHANGE FROM DETAILS TO OTHER DETAILS */
 const displaying = ref(props.shows.slice(0,5));
 </script>
 

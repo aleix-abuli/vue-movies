@@ -12,7 +12,12 @@ const props = defineProps({
 <template>
   <RouterLink :to="`/shows/${show.id}`">
     <img
-      :src="`https://image.tmdb.org/t/p/w300${show.backdrop_path}`"
+      :src="
+      show.backdrop_path ?
+      `https://image.tmdb.org/t/p/w300${show.backdrop_path}`
+      :
+      'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
+      "
       :alt="`${show.name} image`"
     />
     <p>{{ show.name }}</p>

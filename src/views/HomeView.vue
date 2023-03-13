@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import ShowCarouselVue from "../components/ShowCarousel.vue";
 import { useShowStore } from "../stores/shows";
 import ShowCarousel from "../components/ShowCarousel.vue";
 
