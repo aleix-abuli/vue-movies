@@ -10,43 +10,71 @@ export const useShowStore = defineStore("shows", () => {
   const topRatedShows = ref(null);
   const airingToday = ref(null);
   const airingThisWeek = ref(null);
+  const genres = ref(null);
 
   async function getPopularShows(page) {
     const { data } = await axios.get(
       `${base_url}/tv/popular?api_key=${api_key}&language=en-US&page=${page}`
     );
-    popularShows.value = data;
+    popularShows.value = data.results;
     console.log(popularShows.value);
     return data;
   }
 
   async function getTopShows(page) {
+    console.log('adding shows in page', page);
     const { data } = await axios.get(
       `${base_url}/tv/top_rated?api_key=${api_key}&language=en-US&page=${page}`
     );
-    topRatedShows.value = data;
+    topRatedShows.value = data.results;
     console.log(topRatedShows.value);
     return data;
   }
 
   async function getAiringToday(page) {
     const { data } = await axios.get(
-      `${base_url}/tv/top_rated?api_key=${api_key}&language=en-US&page=${page}`
+      `${base_url}/tv/airing_today?api_key=${api_key}&language=en-US&page=${page}`
     );
-    airingToday.value = data;
+    airingToday.value = data.results;
     console.log(airingToday.value);
     return data;
   }
 
   async function getAiringThisWeek(page) {
     const { data } = await axios.get(
-      `${base_url}/tv/top_rated?api_key=${api_key}&language=en-US&page=${page}`
+      `${base_url}/tv/on_the_air?api_key=${api_key}&language=en-US&page=${page}`
     );
-    airingThisWeek.value = data;
+    airingThisWeek.value = data.results;
     console.log(airingThisWeek.value);
     return data;
   }
 
+  async function paginateResults(page, string) {
+    const { data } = await axios.get(
+      `${base_url}/tv/${string}?api_key=${api_key}&language=en-US&page=${page}`
+    );
+    switch (string) {
+      case 'popular':
+        popularShows.value = popularShows.value.concat(data.results);
+        break;
+      case 'top_rated':
+        topRatedShows.value = topRatedShows.value.concat(data.results);
+        break;
+      case 'airing_today':
+        airingToday.value = airingToday.value.concat(data.results);
+        break;
+      case 'on_the_air':
+        airingThisWeek.value = airingThisWeek.value.concat(data.results);
+        break;
+    }
+  }
+
+  async function getGenres() {
+    const { data } = await axios.get(
+      `${base_url}/genre/tv/list?api_key=${api_key}&language=en-US`
+    );
+    genres.value = data.genres;
+  }
 
   /*------------------ TO BE DEVELOPED ------------------- */
   /* async function searchShow(string) {
@@ -74,7 +102,6 @@ export const useShowStore = defineStore("shows", () => {
     const { data } = await axios.get(
       `${base_url}/tv/${id}/similar?api_key=${api_key}&language=en-US`
     );
-    console.log(`fetching similars with id ${id}`, data.results.slice(0,5));
     return data;
   }
 
@@ -90,14 +117,17 @@ export const useShowStore = defineStore("shows", () => {
     topRatedShows,
     airingToday,
     airingThisWeek,
+    genres,
     getPopularShows,
     getTopShows,
     getAiringToday,
     getAiringThisWeek,
+    paginateResults,
+    getGenres,
     /* searchShow, */
     getShowDetails,
     getShowSeasons,
     getSimilarShows,
-    getRecomms
+    getRecomms,
   };
 });

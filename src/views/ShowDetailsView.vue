@@ -49,6 +49,7 @@ onMounted(() => {
       {{ showData.seasons.length }}
       {{ showData.seasons.length === 1 ? "season" : "seasons" }}
     </p>
+    <p v-for="genre in showData.genres" :key="genre.id">{{ genre.name }}</p>
     <p>{{ showData.overview }}</p>
     <p
       v-for="season in showData.seasons"

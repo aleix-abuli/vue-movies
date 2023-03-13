@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar.vue";
 
 <template>
   <nav>
-    <RouterLink to="/">Serialized</RouterLink>
+    <RouterLink to="/">SerialBinger</RouterLink>
     <!-- <SearchBar /> -->
   </nav>
 </template>
