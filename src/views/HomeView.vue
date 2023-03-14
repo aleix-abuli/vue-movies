@@ -13,22 +13,22 @@ const airingWeekPage = ref(1);
 
 const addPopular = async () => {
   popularPage.value += 1;
-  await showStore.paginateResults(popularPage.value, 'popular');
+  await showStore.paginateResults(popularPage.value, "popular");
 };
 
 const addTop = async () => {
   topPage.value += 1;
-  await showStore.paginateResults(topPage.value, 'top_rated');
+  await showStore.paginateResults(topPage.value, "top_rated");
 };
 
 const addAiringToday = async () => {
   airingTodayPage.value += 1;
-  await showStore.paginateResults(airingTodayPage.value, 'airing_today');
+  await showStore.paginateResults(airingTodayPage.value, "airing_today");
 };
 
 const addAiringWeek = async () => {
   airingWeekPage.value += 1;
-  await showStore.paginateResults(airingWeekPage.value, 'on_the_air');
+  await showStore.paginateResults(airingWeekPage.value, "on_the_air");
 };
 
 onMounted(async () => {
@@ -42,7 +42,10 @@ onMounted(async () => {
 
 <template>
   <header>
-    <HomeHeader v-if="showStore.popularShows && showStore.genres" :shows="showStore.popularShows.slice(0,3)"/>
+    <HomeHeader
+      v-if="showStore.popularShows && showStore.genres"
+      :shows="showStore.popularShows.slice(0, 3)"
+    />
   </header>
   <main>
     <h2 class="home-view-title">What's hot <span>></span></h2>
@@ -75,3 +78,24 @@ onMounted(async () => {
     />
   </main>
 </template>
+
+<style>
+.home-view-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin: 4rem 2rem 2rem 6rem;
+}
+
+.home-view-title span {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--yellow);
+}
+
+@media screen and (max-width: 768px) {
+  .home-view-title {
+    margin: 2rem 3rem 2rem 3rem;
+  }
+}
+</style>

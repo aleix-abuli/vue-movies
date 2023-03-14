@@ -32,8 +32,8 @@ watch(
 );
 
 watch(episodes, () => {
-  console.log('Episodes length', episodes.value);
-})
+  console.log("Episodes length", episodes.value);
+});
 
 onMounted(async () => {
   fetchEpisodes();
@@ -41,8 +41,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="episodes" :class="episodes.episodes.length < 5 ? 'season-carousel-grid' : 'season-carousel-grid-2'">
-    <div v-for="episode in episodes.episodes" :key="episode.id" class="season-carousel-item">
+  <div
+    v-if="episodes"
+    :class="
+      episodes.episodes.length < 5
+        ? 'season-carousel-grid'
+        : 'season-carousel-grid-2'
+    "
+  >
+    <div
+      v-for="episode in episodes.episodes"
+      :key="episode.id"
+      class="season-carousel-item"
+    >
       <img
         :src="
           episode.still_path
@@ -52,7 +63,47 @@ onMounted(async () => {
         :alt="`${episode.name} image`"
         class="season-carousel-img"
       />
-      <p class="season-carousel-p">{{ episode.episode_number }}. {{ episode.name }}</p>
+      <p class="season-carousel-p">
+        {{ episode.episode_number }}. {{ episode.name }}
+      </p>
     </div>
   </div>
 </template>
+
+<style>
+.season-carousel-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 25rem));
+  gap: 1rem;
+}
+
+.season-carousel-grid-2 {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.season-carousel-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.season-carousel-p {
+  color: var(--white);
+  max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .season-carousel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+  }
+  .season-carousel-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+  }
+}
+</style>
