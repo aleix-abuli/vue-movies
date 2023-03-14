@@ -17,17 +17,14 @@ export const useShowStore = defineStore("shows", () => {
       `${base_url}/tv/popular?api_key=${api_key}&language=en-US&page=${page}`
     );
     popularShows.value = data.results;
-    console.log(popularShows.value);
     return data;
   }
 
   async function getTopShows(page) {
-    console.log('adding shows in page', page);
     const { data } = await axios.get(
       `${base_url}/tv/top_rated?api_key=${api_key}&language=en-US&page=${page}`
     );
     topRatedShows.value = data.results;
-    console.log(topRatedShows.value);
     return data;
   }
 
@@ -36,7 +33,6 @@ export const useShowStore = defineStore("shows", () => {
       `${base_url}/tv/airing_today?api_key=${api_key}&language=en-US&page=${page}`
     );
     airingToday.value = data.results;
-    console.log(airingToday.value);
     return data;
   }
 
@@ -45,7 +41,6 @@ export const useShowStore = defineStore("shows", () => {
       `${base_url}/tv/on_the_air?api_key=${api_key}&language=en-US&page=${page}`
     );
     airingThisWeek.value = data.results;
-    console.log(airingThisWeek.value);
     return data;
   }
 
@@ -54,16 +49,16 @@ export const useShowStore = defineStore("shows", () => {
       `${base_url}/tv/${string}?api_key=${api_key}&language=en-US&page=${page}`
     );
     switch (string) {
-      case 'popular':
+      case "popular":
         popularShows.value = popularShows.value.concat(data.results);
         break;
-      case 'top_rated':
+      case "top_rated":
         topRatedShows.value = topRatedShows.value.concat(data.results);
         break;
-      case 'airing_today':
+      case "airing_today":
         airingToday.value = airingToday.value.concat(data.results);
         break;
-      case 'on_the_air':
+      case "on_the_air":
         airingThisWeek.value = airingThisWeek.value.concat(data.results);
         break;
     }
@@ -76,7 +71,6 @@ export const useShowStore = defineStore("shows", () => {
     genres.value = data.genres;
   }
 
-  /*------------------ TO BE DEVELOPED ------------------- */
   async function searchShow(string) {
     const { data } = await axios.get(
       `${base_url}/search/tv?api_key=${api_key}&language=en-US&page=1&query=${string}`

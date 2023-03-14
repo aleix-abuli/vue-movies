@@ -12,9 +12,6 @@ const props = defineProps({
 setInterval(() => {
   if (currentDisplay.value < 2) currentDisplay.value += 1;
   else currentDisplay.value = 0;
-
-  console.log(currentDisplay.value);
-  console.log(props.shows);
 }, 6000);
 </script>
 

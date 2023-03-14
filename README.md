@@ -1,29 +1,60 @@
-# vue-movies
+# Serial Binger
 
-This template should help get you started developing with Vue 3 in Vite.
+Serial Binger is a simple web application that allows users to browse and view details of TV shows.
 
-## Recommended IDE Setup
+![Mock up 1](./public/mockup1.png)
+![Mock up 2](./public/mockup2_2.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Customize configuration
+- Users can view a homepage with different TV show recommendations
+- Users can search TV shows through a search bar 
+- Users can click on a TV show to view more details about it
+- Details include show title, rating, overview, seasons and episodes
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Technologies Used
 
-## Project Setup
+- Vue.js
+- Vue Router
+- Pinia
+- Axios
 
-```sh
+## Getting Started
+
+1. Clone the repository:
+
+```npm
+git clone https://github.com/aleix-abuli/vue-movies.git
+```
+
+2. Install dependencies:
+
+```npm
+cd vue-movies
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Start the development server:
 
-```sh
+```npm
 npm run dev
 ```
 
-### Compile and Minify for Production
+4. Navigate to `http://127.0.0.1:5173/` in your web browser to view the app.
 
-```sh
-npm run build
-```
+## API
+
+This app uses [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction) to fetch data about TV shows. The following endpoints are used:
+
+- `GET /tv/popular`: returns a list of popular TV shows
+- `GET /tv/top_rated`: returns a list of the top ratedTV shows
+- `GET /tv/airing_today`: returns a list of TV shows that are airing today
+- `GET /tv/on_the_air`: returns a list of TV shows that are airing in the next 7 days
+- `GET /genre/tv/list`: returns a list of TV genres
+- `GET /search/tv`: returns a list of TV shows based on a specific query
+- `GET /tv/:tv_id`: returns the details of a specific TV show
+- `GET /tv/:tv_id/season/:season_number`: returns a list of the seasons a specific TV show has
+- `GET /tv/:tv_id/similar`: returns a list of TV shows that are similar to a specific TV show
+- `GET /tv/:tv_id/recommendations`: returns a list of TV show recommendations for a specific TV show
+
+![Mock up 3](./public/mockup3.png)

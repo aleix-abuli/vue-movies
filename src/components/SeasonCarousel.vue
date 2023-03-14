@@ -31,10 +31,6 @@ watch(
   }
 );
 
-watch(episodes, () => {
-  console.log("Episodes length", episodes.value);
-});
-
 onMounted(async () => {
   fetchEpisodes();
 });
@@ -100,10 +96,10 @@ onMounted(async () => {
 
 @media screen and (max-width: 768px) {
   .season-carousel-grid {
-    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
   .season-carousel-grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 }
 </style>
