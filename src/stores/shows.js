@@ -77,12 +77,12 @@ export const useShowStore = defineStore("shows", () => {
   }
 
   /*------------------ TO BE DEVELOPED ------------------- */
-  /* async function searchShow(string) {
+  async function searchShow(string) {
     const { data } = await axios.get(
       `${base_url}/search/tv?api_key=${api_key}&language=en-US&page=1&query=${string}`
     );
-    console.log('SEARCH', data);
-  } */
+    return data.results;
+  }
 
   async function getShowDetails(id) {
     const { data } = await axios.get(
@@ -124,7 +124,7 @@ export const useShowStore = defineStore("shows", () => {
     getAiringThisWeek,
     paginateResults,
     getGenres,
-    /* searchShow, */
+    searchShow,
     getShowDetails,
     getShowSeasons,
     getSimilarShows,
