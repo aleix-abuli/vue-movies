@@ -180,6 +180,17 @@ footer p {
     right: 2rem;
 }
 
+.show-carousel-see-more {
+    background-color: #74688B;
+    color: var(--white);
+    width: 200px;
+    height: 300px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: var(--border-radius);
+    font-size: 1.6rem;
+}
+
 .snaps-inline {
     scroll-snap-type: inline mandatory;
     scroll-padding-inline: 6rem;
@@ -205,12 +216,17 @@ footer p {
 .show-item-container img {
     border-radius: var(--border-radius);
     width: 200px;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    object-position: center;
 }
 
 .show-item-container p {
     font-size: 1.6rem;
     text-align: center;
     color: var(--white);
+    white-space: break-spaces;
+    max-width: 100%;
 }
 
 /* ShowDetailsView */
@@ -251,6 +267,11 @@ footer p {
     font-size: 7rem;
     font-weight: 800;
     color: var(--white);
+}
+
+.show-details-p-flex {
+    display: flex;
+    gap: 1rem;
 }
 
 .show-details-p {
@@ -295,14 +316,17 @@ footer p {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 30rem));
     gap: 1rem;
 }
 
 .season-carousel-img {
     width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
 }
 
 .season-carousel-p {
     color: var(--white);
+    max-width: 100%;
 }

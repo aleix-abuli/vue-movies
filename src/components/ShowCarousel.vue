@@ -31,8 +31,8 @@ const scrollRight = () => {
     <button @click="scrollLeft" class="show-carousel-btn left">&lt;</button>
     <div class="show-carousel-flex snaps-inline" ref="scrollContainer">
       <ShowItem v-for="show in shows" :key="show.id" :show="show" />
-      <button v-if="see_more && shows.length < 60" @click="emit('addShows')">
-        + see more
+      <button v-if="see_more && shows.length < 60" @click="emit('addShows')" class="show-carousel-see-more">
+        Load more
       </button>
     </div>
     <button @click="scrollRight" class="show-carousel-btn right">></button>

@@ -21,6 +21,11 @@ const fetchInfo = async () => {
   showRecomms.value = await showStore.getRecomms(route.params.id);
 };
 
+const changeSeason = (season) => {
+  if(currentSeason.value !== season.season_number) currentSeason.value = season.season_number;
+  else currentSeason.value = null;
+};
+
 watch(
   () => route.params.id,
   () => {
@@ -50,10 +55,16 @@ onMounted(() => {
       </div>
       <div class="show-details-info">
         <h1 class="show-details-title">{{ showData.name }}</h1>
-        <p class="show-details-p">
-          {{ showData.seasons.length }}
-          {{ showData.seasons.length === 1 ? "season" : "seasons" }}
-        </p>
+        <div class="show-details-p-flex">
+          <p class="show-details-p">{{ showData.first_air_date.split('-')[0] }}</p>
+          <p class="show-details-p">
+            {{ showData.seasons.length }}
+            {{ showData.seasons.length === 1 ? "season" : "seasons" }}
+          </p>
+          <div>
+            <p class="show-details-p">User rating: {{ showData.vote_average }}</p>
+          </div>
+        </div>
         <div class="genres-flex">
           <p v-for="genre in showData.genres" :key="genre.id" class="genre-tag">
             {{ genre.name }}
@@ -67,7 +78,7 @@ onMounted(() => {
         <p
           v-for="season in showData.seasons"
           :key="season.id"
-          @click="() => (currentSeason = season.season_number)"
+          @click="changeSeason(season)"
           :class="
             currentSeason === season.season_number
               ? 'show-details-s selected'
@@ -78,7 +89,7 @@ onMounted(() => {
         </p>
       </div>
       <SeasonCarousel
-        v-if="currentSeason"
+        v-if="currentSeason !== null"
         :show_id="showData.id"
         :season_number="currentSeason"
       />
