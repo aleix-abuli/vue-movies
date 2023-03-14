@@ -42,8 +42,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="episodes">
-    <div v-for="episode in episodes.episodes" :key="episode.id">
+  <div v-if="episodes" class="season-carousel-grid">
+    <div v-for="episode in episodes.episodes" :key="episode.id" class="season-carousel-item">
       <img
         :src="
           episode.still_path
@@ -51,8 +51,9 @@ onMounted(async () => {
             : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
         "
         alt=""
+        class="season-carousel-img"
       />
-      <p>{{ episode.episode_number }}. {{ episode.name }}</p>
+      <p class="season-carousel-p">{{ episode.episode_number }}. {{ episode.name }}</p>
     </div>
   </div>
 </template>

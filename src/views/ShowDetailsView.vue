@@ -16,7 +16,7 @@ const currentSeason = ref(null);
 
 const fetchInfo = async () => {
   showData.value = await showStore.getShowDetails(route.params.id);
-  currentSeason.value = showData.value.seasons[0].season_number;
+  currentSeason.value = null;
   similarShows.value = await showStore.getSimilarShows(route.params.id);
   showRecomms.value = await showStore.getRecomms(route.params.id);
 };
@@ -36,32 +36,56 @@ onMounted(() => {
 
 <template>
   <template v-if="showData">
-    <img
-      :src="
-        showData.backdrop_path
-          ? `https://image.tmdb.org/t/p/w1280${showData.backdrop_path}`
-          : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
-      "
-      alt=""
-    />
-    <h1>{{ showData.name }}</h1>
-    <p>
-      {{ showData.seasons.length }}
-      {{ showData.seasons.length === 1 ? "season" : "seasons" }}
-    </p>
-    <p v-for="genre in showData.genres" :key="genre.id">{{ genre.name }}</p>
-    <p>{{ showData.overview }}</p>
-    <p
-      v-for="season in showData.seasons"
-      :key="season.id"
-      @click="() => currentSeason = season.season_number"
-    >
-      {{ season.name }}
-    </p>
-    <SeasonCarousel :show_id="showData.id" :season_number="currentSeason" />
-    <h2>Similar to this:</h2>
+    <div>
+      <div class="show-details-gradient">
+        <img
+          :src="
+            showData.backdrop_path
+              ? `https://image.tmdb.org/t/p/w1280${showData.backdrop_path}`
+              : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
+          "
+          alt=""
+          class="show-details-img"
+        />
+      </div>
+      <div class="show-details-info">
+        <h1 class="show-details-title">{{ showData.name }}</h1>
+        <p class="show-details-p">
+          {{ showData.seasons.length }}
+          {{ showData.seasons.length === 1 ? "season" : "seasons" }}
+        </p>
+        <div class="genres-flex">
+          <p v-for="genre in showData.genres" :key="genre.id" class="genre-tag">
+            {{ genre.name }}
+          </p>
+        </div>
+        <p class="show-details-p">{{ showData.overview }}</p>
+      </div>
+    </div>
+    <div class="show-details-season-container">
+      <div class="show-details-s-names-flex">
+        <p
+          v-for="season in showData.seasons"
+          :key="season.id"
+          @click="() => (currentSeason = season.season_number)"
+          :class="
+            currentSeason === season.season_number
+              ? 'show-details-s selected'
+              : 'show-details-s'
+          "
+        >
+          {{ season.name }}
+        </p>
+      </div>
+      <SeasonCarousel
+        v-if="currentSeason"
+        :show_id="showData.id"
+        :season_number="currentSeason"
+      />
+    </div>
+    <h2 class="home-view-title">Similar to this <span>></span></h2>
     <ShowCarousel v-if="similarShows" :shows="similarShows.results" />
-    <h2>You might also like:</h2>
+    <h2 class="home-view-title">You might also like <span>></span></h2>
     <ShowCarousel v-if="showRecomms" :shows="showRecomms.results" />
   </template>
   <Loader v-else />
