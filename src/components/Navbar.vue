@@ -35,6 +35,7 @@ const search = async () => {
         v-if="showSearch"
         type="text"
         @input="search"
+        @compositionend="search"
         v-model="valueToSearch"
         placeholder="Search shows..."
       />
