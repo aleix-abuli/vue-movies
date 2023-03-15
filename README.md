@@ -2,6 +2,8 @@
 
 Serial Binger is a simple web application that allows users to browse and view details of TV shows.
 
+Check out a deployment of the app [here](https://serialbinger.vercel.app/).
+
 ![Mock up 1](./public/mockup1.png)
 ![Mock up 2](./public/mockup2_2.png)
 
