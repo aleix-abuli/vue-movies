@@ -92,9 +92,9 @@ onMounted(() => {
       </div>
       <SeasonCarousel v-if="currentSeason !== null" :show_id="showData.id" :season_number="currentSeason" />
     </div>
-    <h2 class="home-view-title">Similar to this <span>></span></h2>
+    <h2 class="home-view-title">Similar to this <span class="arrow">></span></h2>
     <ShowCarousel v-if="similarShows" :shows="similarShows.results" />
-    <h2 class="home-view-title">You might also like <span>></span></h2>
+    <h2 class="home-view-title">You might also like <span class="arrow">></span></h2>
     <ShowCarousel v-if="showRecomms" :shows="showRecomms.results" />
   </template>
   <Loader v-else />
