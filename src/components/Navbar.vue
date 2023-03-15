@@ -36,6 +36,7 @@ const search = async () => {
         type="text"
         @input="search"
         @compositionend="search"
+        inputmode="text"
         v-model="valueToSearch"
         placeholder="Search shows..."
       />
@@ -124,8 +125,6 @@ nav {
 
   .nav-logo span {
     font-size: 2rem;
-    color: var(--yellow);
-    font-weight: 800;
   }
 
   .search-results-error {

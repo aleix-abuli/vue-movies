@@ -44,15 +44,11 @@ onMounted(() => {
   <template v-if="showData">
     <div>
       <div class="show-details-gradient">
-        <img
-          :src="
-            showData.backdrop_path
-              ? `https://image.tmdb.org/t/p/w1280${showData.backdrop_path}`
-              : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
-          "
-          alt=""
-          class="show-details-img"
-        />
+        <img :src="
+          showData.backdrop_path
+            ? `https://image.tmdb.org/t/p/w1280${showData.backdrop_path}`
+            : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
+        " alt="" class="show-details-img" />
       </div>
       <div class="show-details-info">
         <h1 class="show-details-title">{{ showData.name }}</h1>
@@ -86,24 +82,15 @@ onMounted(() => {
     <p class="show-details-p-media">{{ showData.overview }}</p>
     <div class="show-details-season-container">
       <div class="show-details-s-names-flex">
-        <p
-          v-for="season in showData.seasons"
-          :key="season.id"
-          @click="changeSeason(season)"
-          :class="
-            currentSeason === season.season_number
-              ? 'show-details-s selected'
-              : 'show-details-s'
-          "
-        >
+        <p v-for="season in showData.seasons" :key="season.id" @click="changeSeason(season)" :class="
+          currentSeason === season.season_number
+            ? 'show-details-s selected'
+            : 'show-details-s'
+        ">
           {{ season.name }}
         </p>
       </div>
-      <SeasonCarousel
-        v-if="currentSeason !== null"
-        :show_id="showData.id"
-        :season_number="currentSeason"
-      />
+      <SeasonCarousel v-if="currentSeason !== null" :show_id="showData.id" :season_number="currentSeason" />
     </div>
     <h2 class="home-view-title">Similar to this <span>></span></h2>
     <ShowCarousel v-if="similarShows" :shows="similarShows.results" />
@@ -128,11 +115,9 @@ onMounted(() => {
 .show-details-gradient::after {
   display: block;
   position: relative;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0,
-    var(--purple) 100%
-  );
+  background-image: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0) 0,
+      var(--purple) 100%);
   margin-top: -80vh;
   height: 80vh;
   width: 100%;

@@ -1,11 +1,13 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
 
 <template>
   <footer>
     <RouterLink to="/" class="footer-logo"
       ><span>S</span>B<span>.</span></RouterLink
     >
-    <p>Coded by Aleix Abulí.</p>
+    <p class="footer-p">Coded by Aleix Abulí.</p>
     <div class="footer-flex">
       <a href="https://github.com/aleix-abuli" target="_blank"
         ><img src="/github.png" alt=""
@@ -43,8 +45,9 @@ footer {
   font-weight: 800;
 }
 
-footer p {
+.footer-p {
   font-size: 1.5rem;
+  color: var(--white);
 }
 
 .footer-flex {
@@ -54,10 +57,6 @@ footer p {
 
 .footer-flex img {
   width: 2rem;
-}
-
-footer p {
-  color: var(--white);
 }
 
 @media screen and (max-width: 768px) {

@@ -8,7 +8,7 @@ Serial Binger is a simple web application that allows users to browse and view d
 ## Features
 
 - Users can view a homepage with different TV show recommendations
-- Users can search TV shows through a search bar 
+- Users can search TV shows through a search bar
 - Users can click on a TV show to view more details about it
 - Details include show title, rating, overview, seasons and episodes
 

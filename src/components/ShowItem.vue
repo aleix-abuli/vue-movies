@@ -18,8 +18,9 @@ const props = defineProps({
           : 'https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg'
       "
       :alt="`${show.name} image`"
+      class="show-item-img"
     />
-    <p>{{ show.name }}</p>
+    <p class="show-item-p">{{ show.name }}</p>
   </RouterLink>
 </template>
 
@@ -32,7 +33,7 @@ const props = defineProps({
   width: 200px;
 }
 
-.show-item-container img {
+.show-item-img {
   border-radius: var(--border-radius);
   width: 200px;
   aspect-ratio: 2/3;
@@ -40,7 +41,7 @@ const props = defineProps({
   object-position: center;
 }
 
-.show-item-container p {
+.show-item-p {
   font-size: 1.6rem;
   text-align: center;
   color: var(--white);
@@ -50,7 +51,7 @@ const props = defineProps({
 }
 
 @media screen and (max-width: 768px) {
-  .show-item-container img {
+  .show-item-img {
     width: 120px;
   }
 }

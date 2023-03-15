@@ -48,28 +48,28 @@ onMounted(async () => {
     />
   </header>
   <main>
-    <h2 class="home-view-title">What's hot <span>></span></h2>
+    <h2 class="home-view-title">What's hot <span class="arrow">></span></h2>
     <ShowCarousel
       v-if="showStore.popularShows"
       :shows="showStore.popularShows"
       :see_more="true"
       @addShows="addPopular"
     />
-    <h2 class="home-view-title">Top rated TV shows <span>></span></h2>
+    <h2 class="home-view-title">Top rated TV shows <span class="arrow">></span></h2>
     <ShowCarousel
       v-if="showStore.topRatedShows"
       :shows="showStore.topRatedShows"
       :see_more="true"
       @addShows="addTop"
     />
-    <h2 class="home-view-title">Airing today <span>></span></h2>
+    <h2 class="home-view-title">Airing today <span class="arrow">></span></h2>
     <ShowCarousel
       v-if="showStore.airingToday"
       :shows="showStore.airingToday"
       :see_more="true"
       @addShows="addAiringToday"
     />
-    <h2 class="home-view-title">Airing this week <span>></span></h2>
+    <h2 class="home-view-title">Airing this week <span class="arrow">></span></h2>
     <ShowCarousel
       v-if="showStore.airingThisWeek"
       :shows="showStore.airingThisWeek"
@@ -87,7 +87,7 @@ onMounted(async () => {
   margin: 4rem 2rem 2rem 6rem;
 }
 
-.home-view-title span {
+.arrow {
   font-size: 2rem;
   font-weight: 900;
   color: var(--yellow);
